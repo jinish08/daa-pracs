@@ -1,8 +1,5 @@
 #include <stdio.h>
-#include <conio.h>
-
 int m = 0, n = 4;
-
 int cal(int temp[10][10], int t[10][10])
 {
     int i, j, m = 0;
@@ -14,7 +11,6 @@ int cal(int temp[10][10], int t[10][10])
         }
     return m;
 }
-
 int check(int a[10][10], int t[10][10])
 {
     int i, j, f = 1;
@@ -24,8 +20,7 @@ int check(int a[10][10], int t[10][10])
                 f = 0;
     return f;
 }
-
-void main()
+int main()
 {
     int p, i, j, n = 4, a[10][10], t[10][10], temp[10][10], r[10][10];
     int m = 0, x = 0, y = 0, d = 1000, dmin = 0, l = 0;
@@ -33,12 +28,10 @@ void main()
     for (i = 0; i < n; i++)
         for (j = 0; j < n; j++)
             scanf("%d", &a[i][j]);
-
     printf("\nEnter the target matrix,space with zero :\n");
     for (i = 0; i < n; i++)
         for (j = 0; j < n; j++)
             scanf("%d", &t[i][j]);
-
     printf("\nEntered Matrix is :\n");
     for (i = 0; i < n; i++)
     {
@@ -46,7 +39,6 @@ void main()
             printf("%d\t", a[i][j]);
         printf("\n");
     }
-
     printf("\nTarget Matrix is :\n");
     for (i = 0; i < n; i++)
     {
@@ -54,7 +46,6 @@ void main()
             printf("%d\t", t[i][j]);
         printf("\n");
     }
-
     while (!(check(a, t)))
     {
         l++;
@@ -68,12 +59,10 @@ void main()
                     y = j;
                 }
             }
-
         // To move upwards
         for (i = 0; i < n; i++)
             for (j = 0; j < n; j++)
                 temp[i][j] = a[i][j];
-
         if (x != 0)
         {
             p = temp[x][y];
@@ -89,8 +78,6 @@ void main()
                 for (j = 0; j < n; j++)
                     r[i][j] = temp[i][j];
         }
-
-        // To move downwards
         for (i = 0; i < n; i++)
             for (j = 0; j < n; j++)
                 temp[i][j] = a[i][j];
@@ -109,7 +96,6 @@ void main()
                 for (j = 0; j < n; j++)
                     r[i][j] = temp[i][j];
         }
-
         // To move right side
         for (i = 0; i < n; i++)
             for (j = 0; j < n; j++)
@@ -129,7 +115,6 @@ void main()
                 for (j = 0; j < n; j++)
                     r[i][j] = temp[i][j];
         }
-
         // To move left
         for (i = 0; i < n; i++)
             for (j = 0; j < n; j++)
@@ -149,7 +134,6 @@ void main()
                 for (j = 0; j < n; j++)
                     r[i][j] = temp[i][j];
         }
-
         printf("\nCalculated Intermediate Matrix Value :\n");
         for (i = 0; i < n; i++)
         {
@@ -165,5 +149,5 @@ void main()
             }
         printf("Minimum cost : %d\n", d);
     }
-    getch();
+    return 0;
 }

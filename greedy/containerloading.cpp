@@ -14,7 +14,7 @@ void solve(vector<int> arr, int n, int W)
         }
     }
     cout << "The containers included in the ship are ";
-    for (int i = 0; i <= pointer; i++)
+    for (int i = 0; i < pointer; i++)
     {
         cout << arr[i] << " ";
     }
