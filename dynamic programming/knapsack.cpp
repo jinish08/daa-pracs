@@ -36,6 +36,5 @@ int main()
     cout
         << maxProfit(W, n, wt, val);
 
-    // return 0;
     return 0;
 }

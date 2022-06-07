@@ -69,6 +69,9 @@ int karatsuba(int n1, int n2)
     z1 = (z2_1 + rest(n1, b1, z2_1)) * (z2_2 + rest(n2, b2, z2_2));
     z1 = z1 - z0 - z2;
     result = z2 * b1 * b1 + z1 * b1 + z0;
+
+    
+
     return result;
 }
 

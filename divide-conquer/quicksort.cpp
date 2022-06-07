@@ -1,38 +1,28 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void swap(int arr[], int i, int j)
-{
-    int temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp;
-}
+int partition(int low,int high,vector<int> &arr){
+    int pi = arr[high];
 
-int partition(int arr[], int l, int r)
-{
-    int pivot = arr[r];
-    int i = l - 1;
+    int i = low - 1;
 
-    for (int j = l; j < r; j++)
-    {
-        if (arr[j] < pivot)
-        {
+    for(int j = low;j<high;j++){
+        if(arr[j]<pi){
             i++;
-            swap(arr, i, j);
+            swap(arr[i],arr[j]);
         }
     }
 
-    swap(arr, i + 1, r);
-    return i + 1;
+    swap(arr[i+1],arr[high]);
+
+    return i+1;
 }
 
-void quickSort(int arr[], int l, int r)
-{
-    if (l < r)
-    {
-        int pi = partition(arr, l, r);
-        quickSort(arr, l, pi - 1);
-        quickSort(arr, pi + 1, r);
+void  QuickSort(int high,int low,vector<int> &arr){
+    if(high>low){
+        int pi = partition(low,high,arr);
+        QuickSort(pi-1,low,arr);
+        QuickSort(high,pi+1,arr);
     }
 }
 
@@ -40,16 +30,18 @@ int main()
 {
     int n;
     cin >> n;
-    int arr[n];
-    for (int i = 0; i < n; i++)
+    vector<int> arr(n);
+
+    for (auto &it : arr)
+        cin >> it;
+
+    QuickSort(n - 1, 0, arr);
+
+    for (auto it : arr)
     {
-        cin >> arr[i];
-    }
-    quickSort(arr, 0, n - 1);
-    for (int i = 0; i < n; i++)
-    {
-        cout << arr[i] << " ";
+        cout << it << " ";
     }
     cout << endl;
+
     return 0;
 }

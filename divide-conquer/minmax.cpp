@@ -1,75 +1,53 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void findMinAndMax(vector<int> const &nums, int low, int high, int &min, int &max)
+void minmax(vector<int> &arr, int low, int high, int &mini, int &maxi)
 {
-
-    if (low == high) 
-    {
-        if (max < nums[low])
-        {
-            max = nums[low];
-        }
-
-        if (min > nums[high])
-        {
-            min = nums[high];
-        }
-
+    if (low == high)
         return;
-    }
-
-    if (high - low == 1)
+    else if (high - low == 1)
     {
-        if (nums[low] < nums[high])
+        if (arr[low] > arr[high])
         {
-            if (min > nums[low])
-            {
-                min = nums[low];
-            }
-
-            if (max < nums[high])
-            {
-                max = nums[high];
-            }
+            mini = min(mini, arr[high]);
+            maxi = max(maxi, arr[low]);
         }
         else
         {
-            if (min > nums[high])
-            {
-                min = nums[high];
-            }
-
-            if (max < nums[low])
-            {
-                max = nums[low];
-            }
+            mini = min(mini, arr[low]);
+            maxi = max(maxi, arr[high]);
         }
-        return;
     }
-
-    int mid = (low + high) / 2;
-
-    findMinAndMax(nums, low, mid, min, max);
-    findMinAndMax(nums, mid + 1, high, min, max);
+    else
+    {
+        int mid = (low + high) / 2;
+        minmax(arr, low, mid, mini, maxi);
+        minmax(arr, mid + 1, high, mini, maxi);
+    }
+    return;
 }
 
 int main()
 {
+
     int n;
     cin >> n;
-    vector<int> nums(n);
-    for (auto &it : nums)
+    vector<int> arr(n);
+
+    for (auto &it : arr)
     {
         cin >> it;
     }
 
-    int max = INT_MIN, min = INT_MAX;
+    int mini = 1e9;
+    int maxi = -1e9;
 
-    findMinAndMax(nums, 0, n - 1, min, max);
+    int low = 0;
+    int high = n - 1;
 
-    cout << "The minimum array element is " << min << endl;
-    cout << "The maximum array element is " << max << endl;
+    minmax(arr, low, high, mini, maxi);
+
+    cout << mini << " " << maxi << endl;
 
     return 0;
 }
