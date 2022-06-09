@@ -68,3 +68,25 @@ int main()
     }
     return 0;
 }
+
+// begin 
+// 	If n = threshold then compute
+// 		C = a * b is a conventional matrix.
+// 	Else
+// 		Partition a into four sub matrices  a11, a12, a21, a22.
+// 		Partition b into four sub matrices b11, b12, b21, b22.
+// 		Strassen ( n/2, a11 + a22, b11 + b22, d1)
+// 		Strassen ( n/2, a21 + a22, b11, d2)
+// 		Strassen ( n/2, a11, b12 – b22, d3)
+// 		Strassen ( n/2, a22, b21 – b11, d4)
+// 		Strassen ( n/2, a11 + a12, b22, d5)
+// 		Strassen (n/2, a21 – a11, b11 + b22, d6)
+// 		Strassen (n/2, a12 – a22, b21 + b22, d7)
+
+// 		C = d1+d4-d5+d7     d3+d5
+// 		d2+d4           d1+d3-d2-d6  
+		
+// 	end if
+	
+// 	return (C)
+// end.
