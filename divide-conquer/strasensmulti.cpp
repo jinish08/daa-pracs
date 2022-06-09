@@ -1,7 +1,7 @@
-#include <stdio.h>
-#include <conio.h>
+#include<bits/stdc++.h>
+using namespace std;
 
-void main()
+int main()
 {
     int a[2][2], b[2][2], c[2][2], i, j, m1, m2, m3, m4, m5, m6, m7;
     printf("MATRIX A\n");
@@ -66,4 +66,5 @@ void main()
         }
         printf("\n");
     }
+    return 0;
 }
